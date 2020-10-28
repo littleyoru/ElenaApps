@@ -1,42 +1,50 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet } from 'react-native';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './screens/HomeScreen';
+import ReportMissingPet from './screens/ReportMissingPet';
+
+const Stack = createStackNavigator();
+
+function RootStack() {
+  return (
+    <Stack.Navigator
+      initialRouteName='Home'
+      screenOptions={{ gestureEnabled: false }}>
+      <Stack.Screen
+        name='Home'
+        component={HomeScreen}
+        options={{ title: 'Pet App' }} />
+      <Stack.Screen
+        name='Report'
+        component={ReportMissingPet}
+        options={{ title: 'Report missing pet' }} />
+    </Stack.Navigator>
+  )
+}
+
+const GoldenTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#D4AF37'
+  }
+}
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <TouchableHighlight style={styles.btn}>
-        <Text style={styles.btnText}>Report missing pet</Text>
-      </TouchableHighlight>
-      <TouchableHighlight style={styles.btn}>
-        <Text style={styles.btnText}>Search missing pets</Text>
-      </TouchableHighlight>
-    </View>
-  );
+    <NavigationContainer theme={GoldenTheme} style={styles.nav}>{RootStack()}</NavigationContainer>
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
-  btn: {
-    backgroundColor: '#C1D90B',
-    width: '70%',
-    marginBottom: 16,
-    padding: 16,
-    borderRadius: 5,
-    shadowOffset: { width: 5, height: 10, },
-    shadowColor: '#000000',
-    shadowOpacity: 0.8,
-    shadowRadius: 5,
-    elevation: 1
-  },
-  btnText: {
-    fontSize: 18,
-    fontWeight: '700',
-    textAlign: 'center'
-  },
+  nav: {
+    backgroundColor: 'yellow',
+    borderWidth: 1,
+    borderColor: 'blue'
+  }
 });
