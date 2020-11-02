@@ -2,37 +2,6 @@ import React, { Component, useState } from 'react'
 import { StyleSheet, TextInput, View } from 'react-native'
 import { Icon } from 'react-native-elements'
 
-// class CustomTextInput extends Component {
-//   constructor (props) {
-//     super(props)
-
-//     this.state = {
-//       text: ''
-//     }
-
-//     this.onChangeText = this.onChangeText.bind(this)
-//   }
-
-//   onChangeText (value) {
-//     this.setState({
-//       text: value
-//     })
-//   }
-
-//   render () {
-//     let placeholder = this.props.Placeholder
-//     let text = this.state.text !== '' ? this.state.text : placeholder
-//     return (
-//       <View>
-//         <TextInput
-//           {...props}
-//           value={text}
-//           onChangeText={text => onChangeText(text)} />
-//       </View>
-//     )
-//   }
-// }
-
 const CustomTextInput = (props) => {
   console.log('props ', props)
   const [ hasFocus, onChangeFocus ] = useState(false)
