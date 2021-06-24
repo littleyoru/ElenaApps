@@ -1,6 +1,7 @@
 # Pets app
 
 This is an app made with React Native as a school project.
+Contains a Node local server.
 
 # Functionality
 
